@@ -1,0 +1,28 @@
+.CREATE DATABASE apotek_muthia;
+.INSERT INTO `tb_obat` (`kode_obat`, `nama_obat`, `jenis`, `satuan`, `stok`, `harga_beli`, `harga_jual`) VALUES
+('K001', 'Allerin 120 cc', 'Obat Terbatas', 'Botol', 50, 20000, 22000),
+('K002', 'Becombion 110 ml', 'Obat Bebas', 'Botol', 10, 15000, 16000),
+('K003', 'Becombion 60 ml', 'Obat Bebas', 'Botol', 5, 8000, 9000),
+('K004', 'Betadine Vag Plus', 'Obat Bebas', 'Botol', 12, 12000, 13000),
+('K005', 'Komik', 'Obat Bebas', 'Lembar', 50, 4500, 5000),
+('K006', 'Diazepam', 'Obat Keras', 'Tablet', 4, 55000, 60000),
+('K007', 'CTM', 'Obat Bebas', 'Tablet', 3, 70000, 75000),
+('K008', 'Amoxcillin', 'Obat Terbatas', 'Tablet', 74, 975, 1100),
+('K009', 'Antimo', 'Obat Bebas', 'Tablet', 2, 5100, 6000),
+('K010', 'Paracetamol', 'Obat Bebas', 'Strips', 100, 3000, 4000);
+
+1. SELECT * FROM `tb_obat` WHERE satuan='botol';
+2.SELECT * from tb_obat WHERE jenis BETWEEN 'obat keras'AND 'obat terbatas';
+3.SELECT * FROM `tb_obat` WHERE stok <50;
+4. SELECT * FROM `tb_obat` WHERE satuan != 'tablet';
+5.SELECT * FROM `tb_obat` WHERE jenis = 'Obat Bebas' ORDER BY harga_jual ASC;
+6.SELECT * FROM tb_obat WHERE harga_beli BETWEEN 10000 AND 100000 AND satuan='botol';
+7.SELECT * FROM tb_obat WHERE jenis ='obat bebas' AND stok>=50;
+8.SELECT * FROM `tb_obat` WHERE nama_obat LIKE 'B%';
+9.SELECT * FROM `tb_obat` WHERE nama_obat LIKE '%om%';
+10 SELECT stok, SUM(stok) as Stok_total FROM `tb_obat` GROUP BY satuan;														
+11 SELECT jenis, SUM(harga_jual) as harga_jual FROM `tb_obat` GROUP BY jenis; 
+12  SELECT * FROM tb_obat WHERE kode_obat ='K001' OR kode_obat ='K003' OR kode_obat ='K005' OR kode_obat='K007';
+13 SELECT * nama_obat,stok,harga_beli,harga_jual(harga_beli *stok)AS total_beli,SUM(harga_jual*stok)as total_harga_jual from 'tb_obat';
+14  SELECT satuan, AVG (harga_jual) as rerata_harga_jual FROM 'tb_obat' WHERE NOT satuan ='lembar' GROUP by satuan;
+15 SELECT MIN(harga_beli),MAX(harga_beli) FROM tb_obat;
