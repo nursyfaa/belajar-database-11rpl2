@@ -1,0 +1,7 @@
+php artisan make:migration create_class_table
+
+php artisan migrate
+
+git add.
+git status
+git commit-m"belajar migration laravel"
